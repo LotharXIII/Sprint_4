@@ -2,13 +2,15 @@ import pytest
 from main import BooksCollector
 
 class TestBooksCollector:
+
     #1. Тесты на метод __init__
+
     # Проверка что books_genre по умолчанию пустой
     def test_init_default_value_books_genre(self, collector):
         assert collector.books_genre == {}
     
     # Проверка что favorites по умолчанию пустой
-    def test_init_default_value_favorites(self, collector):
+    def test_init_default_vaslue_favorites(self, collector):
         assert collector.favorites == []
     # Проверка списка genre
     def test_init_default_value_genre(self, collector):
@@ -111,7 +113,7 @@ class TestBooksCollector:
             collector.add_new_book(i)
         assert list(collector.get_books_genre().keys()) == title
     
-    # 7. Проверка получения списка книг с ограничением по возрасту
+    # 7. Проверка метода get_books_for_children
 
     def test_get_books_for_children_age_rating(self, collector):
         title_1 = 'Хоббит'
@@ -123,7 +125,7 @@ class TestBooksCollector:
         books_for_children = collector.get_books_for_children()
         assert  books_for_children == [title_1]
 
-    # 8. Проверка на добавление в список любимых книг
+    # 8. Проверка метода add_book_in_favorites
 
     def test_add_book_in_favorites(self, collector):
         title = 'На западном фронте без перемен'
@@ -131,7 +133,7 @@ class TestBooksCollector:
         collector.add_book_in_favorites(title)
         assert title in collector.get_list_of_favorites_books()
     
-    # 9. Проверка на удаление из списка любимых книг
+    # 9. Проверка метода delete_book_from_favorites
 
     def test_delete_book_from_favorites(self, collector):
         title = 'Война и Мир'
@@ -140,7 +142,7 @@ class TestBooksCollector:
         collector.delete_book_from_favorites(title)
         assert 'Война и Мир' not in collector.get_list_of_favorites_books()
 
-    #10. Проверка на получение списка любимых книг
+    #10. Проверка метода get_list_of_favorites_books
 
     def test_get_list_of_favorites_books(self, collector):
         title_1 = 'Искра жизни'
