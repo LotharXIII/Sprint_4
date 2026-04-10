@@ -30,6 +30,8 @@ class TestBooksCollector:
     # Добавление одной и той же книги два раза
     def test_add_new_book_double_same(self, collector):
         title = 'Что делать, если ваш кот хочет вас убить'
+        collector.add_new_book(title)
+        collector.add_new_book(title)
         assert len(collector.get_books_genre()) != 2
     
     # Добавление книги с длинным названием
